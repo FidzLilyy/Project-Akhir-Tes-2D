@@ -1094,7 +1094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5416e9c79d49a0048ab97c86fb30b22a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transisi: {fileID: 0}
+  transisi: {fileID: 1090234964}
   curve:
     serializedVersion: 2
     m_Curve:

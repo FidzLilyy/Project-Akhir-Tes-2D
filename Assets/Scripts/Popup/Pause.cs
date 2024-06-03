@@ -8,6 +8,8 @@ public class Pause : MonoBehaviour
     public GameObject objectToToggle, panel;
     public string level, nLevel;
 
+    public static bool endLevel = false;
+
     void Update(){
         if(Input.GetKeyDown(KeyCode.Escape)){
             pauseMenu();
@@ -35,6 +37,10 @@ public class Pause : MonoBehaviour
 
     public void NextLevel(){
         Time.timeScale = 1f;
-        SceneManager.LoadScene(nLevel);
+        endLevel = true;
+        print(endLevel);
+        if(!endLevel){
+            SceneManager.LoadScene(nLevel);
+        }
     }
 }

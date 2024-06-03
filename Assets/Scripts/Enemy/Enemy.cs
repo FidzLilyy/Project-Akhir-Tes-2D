@@ -4,47 +4,21 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private bool gerak = false, wall = false, tabrakan = false;
+    private bool gerak = false, wall = false, tabrakan = false, hancur1 =  false, hancur2 = false;
     private Vector3 posisiAwal;
 	private Vector3 posisiAkhir;
 	public LayerMask wallLayer, enemyLayer;
     public int HP;
 
+    Animator animator;
+
 	void Start(){
         posisiAwal = transform.position;
 		posisiAkhir = posisiAwal;
+        animator = GetComponent<Animator>();
     }
 
     void Update(){
-
-
-        //if(!gerak){
-        //    if(Input.GetKeyDown(KeyCode.D) && KenaKiri.kena)
-        //    {
-        //        posisiAkhir = new Vector3(posisiAwal.x + 1f, transform.position.y, 0f);
-        //        gerak = true;
-        //    }else if(Input.GetKeyDown(KeyCode.A) && KenaKanan.kena)
-        //    {
-        //        posisiAkhir = new Vector3(posisiAwal.x + -1f, transform.position.y, 0f);
-        //        gerak = true;
-        //    }else if(Input.GetKeyDown(KeyCode.W) && KenaBawah.kena){
-        //        posisiAkhir = new Vector3(transform.position.x, posisiAwal.y + 1f, 0f);
-        //        gerak = true;
-        //    }else if(Input.GetKeyDown(KeyCode.S) && KenaAtas.kena){
-        //        posisiAkhir = new Vector3(transform.position.x, posisiAwal.y + -1f, 0f);
-        //        gerak = true;
-        //    }
-        //}
-
-        //if(gerak){
-        //        transform.position = Vector3.MoveTowards(transform.position, posisiAkhir, 5 * Time.deltaTime);
-
-        //        if (transform.position == posisiAkhir)
-        //        {
-        //            gerak = false;
-        //            posisiAwal = transform.position;
-        //        }
-        //}
         if(gerak){
             if(!wall && !tabrakan){
                 transform.position = Vector3.Lerp(transform.position, posisiAkhir, Time.deltaTime * 7f);
@@ -58,6 +32,8 @@ public class Enemy : MonoBehaviour
                 gerak = false;
             }
         }
+
+        Animation();
     }
 
     // void WallDetection(Push){
@@ -68,12 +44,14 @@ public class Enemy : MonoBehaviour
     {
         EnemyDetection(direction);
         HP--;
-        /*if(HP <= 0 && wall || tabrakan){
-            Destroy(gameObject);
-        }*/
 
         if(HP <= 0){
-            Destroy(gameObject);
+            if(gameObject.tag == "Enemy1"){
+                hancur1 = true;
+            }
+            if(gameObject.tag == "Enemy2"){
+                hancur2 = true;  
+            }
         }
     }
 
@@ -103,4 +81,19 @@ public class Enemy : MonoBehaviour
 			tabrakan = false;
 		}
 	}
+
+    void Animation(){
+        animator.SetBool("Hancur1", hancur1);
+        animator.SetBool("Hancur2", hancur2);
+
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if(stateInfo.IsName("Hancur_Animation1") && stateInfo.normalizedTime >= 1){
+			//hancur1 = false;
+            Destroy(gameObject);
+		}
+        if(stateInfo.IsName("Hancur_Animation2") && stateInfo.normalizedTime >= 1){
+			//hancur1 = false;
+            Destroy(gameObject);
+		}
+    }
 }

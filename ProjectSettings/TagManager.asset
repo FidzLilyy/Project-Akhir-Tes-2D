@@ -7,6 +7,8 @@ TagManager:
   - Batas
   - Left
   - Enemy
+  - Enemy2
+  - Enemy1
   layers:
   - Default
   - TransparentFX
