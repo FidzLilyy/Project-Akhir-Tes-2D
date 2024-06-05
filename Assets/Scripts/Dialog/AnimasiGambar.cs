@@ -79,7 +79,7 @@ public class AnimasiGambar : MonoBehaviour
                 }else if(PlayerController.player = true){
                     print("pppp");
                     PlayerController.player = false;
-                    gameObject.SetActive(false);
+                    //gameObject.SetActive(false);
                 }
 
                 if(PlayerController.transisiScene){
