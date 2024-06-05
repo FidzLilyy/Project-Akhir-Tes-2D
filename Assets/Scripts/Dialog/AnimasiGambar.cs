@@ -7,6 +7,7 @@ public class AnimasiGambar : MonoBehaviour
 {
     //public GameObject transisi;
     // Definisikan kurva melalui Inspector
+    public string level;
     public AnimationCurve curve;
 
     // Waktu yang diperlukan untuk interpolasi
@@ -14,89 +15,77 @@ public class AnimasiGambar : MonoBehaviour
 
     // Posisi awal dan akhir
     public Vector3 startPosition;
-    public Vector3 endPosition;
+    public Vector3 endPosition, fixPosition;
 
     // Variabel untuk melacak waktu
     private float timeElapsed = 0.0f;
 
     void Update()
     {
+        // if(transform.position == endPosition){
+        //     gameObject.SetActive(false);
+        //     }
         if(Animasi.endProlog == true || PlayerController.player == true){
-            // Perbarui waktu yang telah berlalu
-            timeElapsed += Time.deltaTime;
-
-            // Hitung t berdasarkan waktu yang telah berlalu dan durasi
-            float t = timeElapsed / duration;
-
-            // Gunakan kurva untuk mengatur t
-            float curveT = curve.Evaluate(t);
-
-            // Lerp posisi berdasarkan curveT
-            transform.position = Vector3.Lerp(startPosition, endPosition, curveT);
-
-        }else if(Pause.endLevel){
-            startPosition = new Vector3(777f, 0f, 0f);
-            endPosition = new Vector3(0f, 0f, 0f);
+            if(Finish.end || level == "Level0Fix" || PlayerController.transisiScene == true){
+                //gameObject.SetActive(true);
 
             // Perbarui waktu yang telah berlalu
-            timeElapsed += Time.deltaTime;
+                timeElapsed += Time.deltaTime;
 
-            // Hitung t berdasarkan waktu yang telah berlalu dan durasi
-            float t = timeElapsed / duration;
+                // Hitung t berdasarkan waktu yang telah berlalu dan durasi
+                float t = timeElapsed / duration;
 
-            // Gunakan kurva untuk mengatur t
-            float curveT = curve.Evaluate(t);
+                // Gunakan kurva untuk mengatur t
+                float curveT = curve.Evaluate(t);
 
-            // Lerp posisi berdasarkan curveT
-            transform.position = Vector3.Lerp(startPosition, endPosition, curveT);
+                // Lerp posisi berdasarkan curveT
+                transform.position = Vector3.Lerp(endPosition,startPosition, curveT);
+            }else if(PlayerController.player == true){
+                //gameObject.SetActive(true);
 
-            // Jika sudah mencapai atau melebihi durasi, reset waktu
-            // if (timeElapsed >= duration)
-            // {
-            //     timeElapsed = 0.0f;
-            //     PlayerController.player = false;
-            //     Pause.endLevel = false;
-            //     if(Animasi.endProlog == true){
-            //         SceneManager.LoadScene("Level0Fix");
-            //         Animasi.endProlog = false;
-            //     }else if(PlayerController.player = true){
-            //         PlayerController.player = false;
-            //         //transisi.SetActive(false);
-            //     } 
-            // }
+            // Perbarui waktu yang telah berlalu
+                timeElapsed += Time.deltaTime;
+
+                // Hitung t berdasarkan waktu yang telah berlalu dan durasi
+                float t = timeElapsed / duration;
+
+                // Gunakan kurva untuk mengatur t
+                float curveT = curve.Evaluate(t);
+
+                // Lerp posisi berdasarkan curveT
+                transform.position = Vector3.Lerp(startPosition, endPosition, curveT);
+            }
+            //fixPosition = transform.position;
+
+
+            if (timeElapsed > (duration + 0.7f))
+            {
+                timeElapsed = 0.0f;
+                PlayerController.player = false;
+                Pause.endLevel = false;
+
+                if(Finish.end){
+                    SceneManager.LoadScene(level);
+                    Finish.end = false;
+                    Finish.finish = false;
+                } 
+
+                if(Animasi.endProlog == true){
+                    if(level == "Level0Fix"){
+                        SceneManager.LoadScene(level);
+                    }
+                    Animasi.endProlog = false;
+                    Animasi.prolog = false;
+                }else if(PlayerController.player = true){
+                    print("pppp");
+                    PlayerController.player = false;
+                    gameObject.SetActive(false);
+                }
+
+                if(PlayerController.transisiScene){
+                    Step.death = false;
+                }
+            }
         }
-
-        if (timeElapsed >= duration)
-            {
-                timeElapsed = 0.0f;
-                //PlayerController.player = false;
-                if(Animasi.endProlog == true){
-                    SceneManager.LoadScene("Level0Fix");
-                    Animasi.endProlog = false;
-                }else if(PlayerController.player = true){
-                    PlayerController.player = false;
-                    //transisi.SetActive(false);
-                }else if(Pause.endLevel){
-                    Pause.endLevel = false;
-                    print("Benar");
-                }
-            }
-        if (timeElapsed <= duration)
-            {
-                timeElapsed = 0.0f;
-                //PlayerController.player = false;
-                if(Animasi.endProlog == true){
-                    SceneManager.LoadScene("Level0Fix");
-                    Animasi.endProlog = false;
-                }else if(PlayerController.player = true){
-                    PlayerController.player = false;
-                    //transisi.SetActive(false);
-                }else if(Pause.endLevel){
-                    Pause.endLevel = false;
-                    print("Benar");
-                }
-            }
-
-        
     }
 }

@@ -409,6 +409,7 @@ MonoBehaviour:
   - {fileID: 598146441}
   - {fileID: 1285945604}
   - {fileID: 991778003}
+  transisi: {fileID: 0}
   Animation: TextAnimation
 --- !u!1 &635894958
 GameObject:
@@ -683,7 +684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &991778000
 RectTransform:
   m_ObjectHideFlags: 0
@@ -718,6 +719,7 @@ MonoBehaviour:
   animator: {fileID: 991778002}
   textFields:
   - {fileID: 991778003}
+  transisi: {fileID: 1090234964}
   Animation: TextAnimation
 --- !u!95 &991778002
 Animator:
@@ -1061,7 +1063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1090234965
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1094,7 +1096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5416e9c79d49a0048ab97c86fb30b22a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transisi: {fileID: 1090234964}
+  level: Level0Fix
   curve:
     serializedVersion: 2
     m_Curve:
@@ -1120,8 +1122,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   duration: 2
-  startPosition: {x: 801, y: 0, z: 0}
-  endPosition: {x: 0, y: 0, z: 0}
+  startPosition: {x: 0, y: 0, z: 0}
+  endPosition: {x: 801, y: 0, z: 0}
+  fixPosition: {x: 0, y: 0, z: 0}
 --- !u!95 &1090234967
 Animator:
   serializedVersion: 5
@@ -1200,7 +1203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1285945601
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1236,6 +1239,7 @@ MonoBehaviour:
   textFields:
   - {fileID: 1285945604}
   - {fileID: 991778003}
+  transisi: {fileID: 0}
   Animation: TextAnimation
 --- !u!95 &1285945603
 Animator:

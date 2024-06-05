@@ -9,7 +9,9 @@ public class Animasi : MonoBehaviour
     public TextMeshProUGUI[] textFields; // Array untuk menampung empat TextMeshProUGUI
     private int currentTextIndex = 0;
     private int totalTexts;
-    public static bool endProlog = false;
+    public static bool endProlog = false, prolog = true;
+
+    public GameObject transisi;
 
     public string Animation;
 
@@ -23,8 +25,9 @@ public class Animasi : MonoBehaviour
             textFields[i].gameObject.SetActive(i == 0);
         }
 
-        // Memulai animasi pertama
+        if(Finish.finish){
         animator.Play(Animation); // Pastikan nama animasi sesuai
+        }
     }
 
     void Update()
@@ -46,7 +49,13 @@ public class Animasi : MonoBehaviour
         }
 
         if(totalTexts == 1 && stateInfo.normalizedTime >= 1.0f){
-            endProlog = true;
+            transisi.SetActive(true);
+            if(prolog == true){
+                endProlog = true;
+            }
+            
+            Finish.finish = false;
+            Finish.end = true;
         }
     }
 }
