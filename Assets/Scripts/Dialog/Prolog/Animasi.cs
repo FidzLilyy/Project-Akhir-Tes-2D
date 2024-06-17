@@ -26,21 +26,21 @@ public class Animasi : MonoBehaviour
         }
 
         if(Finish.finish){
-        animator.Play(Animation); // Pastikan nama animasi sesuai
+            animator.Play(Animation); // Pastikan nama animasi sesuai
+            print("BERES");
         }
     }
 
     void Update()
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        if (Input.GetKeyDown(KeyCode.Return) || stateInfo.normalizedTime >= 1.0f)
+        if (stateInfo.normalizedTime >= 1.0f || Input.anyKeyDown)
         {
             // Animasi saat ini selesai, nonaktifkan teks saat ini
             textFields[currentTextIndex].gameObject.SetActive(false);
 
             // Pindah ke teks berikutnya
             currentTextIndex++;
-            print(currentTextIndex);
             if (currentTextIndex < totalTexts)
             {
                 // Aktifkan teks berikutnya dan mainkan animasi berikutnya
@@ -48,12 +48,11 @@ public class Animasi : MonoBehaviour
             }
         }
 
-        if(totalTexts == 1 && stateInfo.normalizedTime >= 1.0f){
-            transisi.SetActive(true);
+        if(currentTextIndex >= totalTexts){
             if(prolog == true){
                 endProlog = true;
+                transisi.SetActive(true);
             }
-            
             Finish.finish = false;
             Finish.end = true;
         }

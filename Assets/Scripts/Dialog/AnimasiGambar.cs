@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class AnimasiGambar : MonoBehaviour
 {
-    //public GameObject transisi;
-    // Definisikan kurva melalui Inspector
     public string level;
     public AnimationCurve curve;
+    public TextMeshProUGUI textS;
+    public string text2;
 
     // Waktu yang diperlukan untuk interpolasi
     public float duration = 2.0f;
@@ -27,6 +28,7 @@ public class AnimasiGambar : MonoBehaviour
         //     }
         if(Animasi.endProlog == true || PlayerController.player == true){
             if(Finish.end || level == "Level0Fix" || PlayerController.transisiScene == true){
+                textS.text = text2;
                 //gameObject.SetActive(true);
 
             // Perbarui waktu yang telah berlalu
@@ -40,7 +42,7 @@ public class AnimasiGambar : MonoBehaviour
 
                 // Lerp posisi berdasarkan curveT
                 transform.position = Vector3.Lerp(endPosition,startPosition, curveT);
-            }else if(PlayerController.player == true){
+            }else if(!Finish.finish){
                 //gameObject.SetActive(true);
 
             // Perbarui waktu yang telah berlalu
@@ -58,7 +60,7 @@ public class AnimasiGambar : MonoBehaviour
             //fixPosition = transform.position;
 
 
-            if (timeElapsed > (duration + 0.7f))
+            if (timeElapsed > duration)
             {
                 timeElapsed = 0.0f;
                 PlayerController.player = false;
