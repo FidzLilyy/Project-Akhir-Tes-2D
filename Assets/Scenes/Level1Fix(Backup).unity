@@ -8298,7 +8298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5416e9c79d49a0048ab97c86fb30b22a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: StoryScene 2
+  scene: 
   curve:
     serializedVersion: 2
     m_Curve:
@@ -9120,7 +9120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02c8bb6f4c48744198a568bd86e0f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  step: 99
+  step: 2
 --- !u!1 &1591484333
 GameObject:
   m_ObjectHideFlags: 0
@@ -11580,7 +11580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56fa4041d006e7b4ab94c209e1bd0f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: StoryScene2
+  scene: 
 --- !u!61 &1981383014
 BoxCollider2D:
   m_ObjectHideFlags: 0

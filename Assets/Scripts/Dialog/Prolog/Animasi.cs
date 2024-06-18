@@ -20,10 +20,10 @@ public class Animasi : MonoBehaviour
         totalTexts = textFields.Length;
 
         // Pastikan hanya teks pertama yang terlihat di awal
-        // for (int i = 0; i < totalTexts; i++)
-        // {
-        //     textFields[i].gameObject.SetActive(i == 0);
-        // }
+        for (int i = 0; i < totalTexts; i++)
+        {
+            textFields[i].gameObject.SetActive(i == 0);
+        }
 
         // if(Finish.finish){
         //     animator.Play(Animation); // Pastikan nama animasi sesuai
@@ -45,17 +45,14 @@ public class Animasi : MonoBehaviour
 
             if (currentTextIndex < totalTexts)
             {
-                print("HAYUUUU");
                 // Aktifkan teks berikutnya dan mainkan animasi berikutnya
                 textFields[currentTextIndex].gameObject.SetActive(true);                
             }
         }
 
         if(currentTextIndex >= totalTexts){
-            if(prolog == true){
                 endProlog = true;
                 transisi.SetActive(true);
-            }
             //Finish.finish = false;
         }
     }

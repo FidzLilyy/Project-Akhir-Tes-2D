@@ -1096,7 +1096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5416e9c79d49a0048ab97c86fb30b22a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: Level0Fix
+  scene: Level3Fix
   curve:
     serializedVersion: 2
     m_Curve:
@@ -1122,7 +1122,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   textS: {fileID: 1611347595}
-  text2: Tutorial
+  text2: Level 3
   duration: 2
   startPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 801, y: 0, z: 0}

@@ -3528,7 +3528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5416e9c79d49a0048ab97c86fb30b22a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: Level3Fix
+  scene: StoryScene 3
   curve:
     serializedVersion: 2
     m_Curve:
@@ -6757,7 +6757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56fa4041d006e7b4ab94c209e1bd0f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Beres: {fileID: 1708104461}
+  scene: StoryScene3
 --- !u!61 &1053181292
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9327,6 +9327,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2031113909}
     m_Modifications:
+    - target: {fileID: 791418168376064043, guid: adaa26a52f3360243bf5ced372a3f781, type: 3}
+      propertyPath: pause
+      value: 
+      objectReference: {fileID: 1211046691}
     - target: {fileID: 791418168376064043, guid: adaa26a52f3360243bf5ced372a3f781, type: 3}
       propertyPath: StepSisa
       value: 

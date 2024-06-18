@@ -2104,6 +2104,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1537358498}
     m_Modifications:
     - target: {fileID: 791418168376064043, guid: adaa26a52f3360243bf5ced372a3f781, type: 3}
+      propertyPath: pause
+      value: 
+      objectReference: {fileID: 1705020136}
+    - target: {fileID: 791418168376064043, guid: adaa26a52f3360243bf5ced372a3f781, type: 3}
       propertyPath: scene
       value: Level3Fix
       objectReference: {fileID: 0}
@@ -5632,7 +5636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5416e9c79d49a0048ab97c86fb30b22a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: Level2Fix
+  scene: 
   curve:
     serializedVersion: 2
     m_Curve:
@@ -10266,7 +10270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56fa4041d006e7b4ab94c209e1bd0f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Beres: {fileID: 615582406}
+  scene: 
 --- !u!61 &1631509212
 BoxCollider2D:
   m_ObjectHideFlags: 0
