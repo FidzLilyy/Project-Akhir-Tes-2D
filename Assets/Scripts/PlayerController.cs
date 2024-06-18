@@ -23,10 +23,10 @@ public class PlayerController : MonoBehaviour
 	Step StepSisa;
 	public static int turn;
 
-	void Awake(){
-		DontDestroyOnLoad(transisi);
-		transisi.SetActive(true);
-	}
+	// void Awake(){
+	// 	DontDestroyOnLoad(transisi);
+	// 	transisi.SetActive(true);
+	// }
 	
 	void Start()
 	{
@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 		if(pause.level == "Level0Fix"){
 			ibu = false;
 		}
+		transisi.SetActive(true);
 	}
 
 	void Update()
@@ -159,18 +160,18 @@ public class PlayerController : MonoBehaviour
 				}
 			}
 
-			if(stateInfo.IsName("kick_idle") && stateInfo.normalizedTime >= 1){
+			if((stateInfo.IsName("kick_idle") || stateInfo.IsName("Ibu_Kick")) && stateInfo.normalizedTime >= 1){
 				kick = false;
 			}
 
-			if(stateInfo.IsName("Move_Atas") && stateInfo.normalizedTime >= 1){
+			if((stateInfo.IsName("Move_Atas") || stateInfo.IsName("Ibu_Atas")) && stateInfo.normalizedTime >= 1){
 				atas = false;
 			}
 
-			if(stateInfo.IsName("Move_Bawah") && stateInfo.normalizedTime >= 1){
+			if((stateInfo.IsName("Move_Bawah") || stateInfo.IsName("Ibu_Bawah")) && stateInfo.normalizedTime >= 1){
 				bawah = false;
 			}
-			if(stateInfo.IsName("Move_Kanan") && stateInfo.normalizedTime >= 1){
+			if((stateInfo.IsName("Move_Kanan") || stateInfo.IsName("Ibu_Kanan")) && stateInfo.normalizedTime >= 1){
 				moveKanan = false;
 			}
 		

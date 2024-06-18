@@ -15,11 +15,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Level0Fix.unity
     guid: 6a0e50e736c1cda449fe480eba3fbe40
   - enabled: 1
+    path: Assets/Scenes/StoryScene 1.unity
+    guid: 3d183525f431a4c4b8872d81e3bda9ab
+  - enabled: 1
     path: Assets/Scenes/Level1Fix.unity
     guid: 904b597282123704684d6ea72086777f
   - enabled: 1
+    path: Assets/Scenes/StoryScene 2.unity
+    guid: 27dd44c28c1920144b9cc8c5e82ef0fc
+  - enabled: 1
     path: Assets/Scenes/Level2Fix.unity
     guid: 33d54074887e47b4ab875673cbfd2614
+  - enabled: 1
+    path: Assets/Scenes/StoryScene 3.unity
+    guid: 071e9223a2585b44b9e8480a27c01274
   - enabled: 1
     path: Assets/Scenes/Level3Fix.unity
     guid: 4fdf42164e0be5341b79a0243cd031c9

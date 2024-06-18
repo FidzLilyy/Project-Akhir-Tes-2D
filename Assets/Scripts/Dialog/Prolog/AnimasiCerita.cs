@@ -10,15 +10,17 @@ public class AnimasiCerita : MonoBehaviour
     private int currentImageIndex = 0;
     private int totalImages;
     public string Animation;
+    public static bool startCerita;
 
     void Start()
     {
         totalImages = images.Length;
+        startCerita = true;
 
-        if(Finish.finish){
-            animator.Play(Animation); // Pastikan nama animasi sesuai
-            print("BERES");
-        }
+        // if(Finish.finish){
+        //     animator.Play(Animation); // Pastikan nama animasi sesuai
+        //     print("BERES");
+        // }
     }
 
     void Update()

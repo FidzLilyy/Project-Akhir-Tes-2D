@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class AnimasiGambar : MonoBehaviour
 {
-    public string level;
+    public string scene;
     public AnimationCurve curve;
     public TextMeshProUGUI textS;
     public string text2;
@@ -26,27 +26,8 @@ public class AnimasiGambar : MonoBehaviour
         // if(transform.position == endPosition){
         //     gameObject.SetActive(false);
         //     }
-        if(Animasi.endProlog == true || PlayerController.player == true){
-            if(Finish.end || level == "Level0Fix" || PlayerController.transisiScene == true){
-                textS.text = text2;
-                //gameObject.SetActive(true);
-
-            // Perbarui waktu yang telah berlalu
-                timeElapsed += Time.deltaTime;
-
-                // Hitung t berdasarkan waktu yang telah berlalu dan durasi
-                float t = timeElapsed / duration;
-
-                // Gunakan kurva untuk mengatur t
-                float curveT = curve.Evaluate(t);
-
-                // Lerp posisi berdasarkan curveT
-                transform.position = Vector3.Lerp(endPosition,startPosition, curveT);
-            }else if(!Finish.finish){
-                //gameObject.SetActive(true);
-
-            // Perbarui waktu yang telah berlalu
-                timeElapsed += Time.deltaTime;
+        if(Animasi.endProlog == true || PlayerController.player == true || AnimasiCerita.startCerita == true){
+            timeElapsed += Time.deltaTime;
 
                 // Hitung t berdasarkan waktu yang telah berlalu dan durasi
                 float t = timeElapsed / duration;
@@ -56,8 +37,50 @@ public class AnimasiGambar : MonoBehaviour
 
                 // Lerp posisi berdasarkan curveT
                 transform.position = Vector3.Lerp(startPosition, endPosition, curveT);
+            if(Finish.finish || Animasi.endProlog == true){
+                timeElapsed += Time.deltaTime;
+
+                // Hitung t berdasarkan waktu yang telah berlalu dan durasi
+                t = timeElapsed / duration;
+
+                // Gunakan kurva untuk mengatur t
+                curveT = curve.Evaluate(t);
+
+                // Lerp posisi berdasarkan curveT
+                transform.position = Vector3.Lerp(endPosition, startPosition, curveT);
             }
-            //fixPosition = transform.position;
+
+            // if(Finish.end || level == "Level0Fix" || PlayerController.transisiScene == true){
+            //     textS.text = text2;
+            //     //gameObject.SetActive(true);
+
+            // // Perbarui waktu yang telah berlalu
+            //     timeElapsed += Time.deltaTime;
+
+            //     // Hitung t berdasarkan waktu yang telah berlalu dan durasi
+            //     float t = timeElapsed / duration;
+
+            //     // Gunakan kurva untuk mengatur t
+            //     float curveT = curve.Evaluate(t);
+
+            //     // Lerp posisi berdasarkan curveT
+            //     transform.position = Vector3.Lerp(endPosition,startPosition, curveT);
+            // }
+            // if(!Finish.finish){
+            //     //gameObject.SetActive(true);
+
+            //     // Perbarui waktu yang telah berlalu
+            //     timeElapsed += Time.deltaTime;
+
+            //     // Hitung t berdasarkan waktu yang telah berlalu dan durasi
+            //     t = timeElapsed / duration;
+
+            //     // Gunakan kurva untuk mengatur t
+            //     curveT = curve.Evaluate(t);
+
+            //     // Lerp posisi berdasarkan curveT
+            //     transform.position = Vector3.Lerp(startPosition, endPosition, curveT);
+            // }
 
 
             if (timeElapsed > duration)
@@ -65,19 +88,21 @@ public class AnimasiGambar : MonoBehaviour
                 timeElapsed = 0.0f;
                 PlayerController.player = false;
                 Pause.endLevel = false;
-
-                if(Finish.end){
-                    SceneManager.LoadScene(level);
-                    Finish.end = false;
+                AnimasiCerita.startCerita = false;
+                if(Finish.finish){
                     Finish.finish = false;
-                } 
+                    SceneManager.LoadScene(scene);
+                }
+
+                // if(Finish.end){
+                //     Finish.end = false;
+                //     Finish.finish = false;
+                // } 
 
                 if(Animasi.endProlog == true){
-                    if(level == "Level0Fix"){
-                        SceneManager.LoadScene(level);
-                    }
                     Animasi.endProlog = false;
                     Animasi.prolog = false;
+                    SceneManager.LoadScene(scene);
                 }else if(PlayerController.player = true){
                     print("pppp");
                     PlayerController.player = false;

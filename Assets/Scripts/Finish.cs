@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Finish : MonoBehaviour
 {
-	public static bool finish = false, end;
-	public GameObject Beres;
+	public static bool finish = false;
+	public string scene;
 	
 	private void OnTriggerEnter2D(Collider2D col)
 	{
@@ -18,7 +18,6 @@ public class Finish : MonoBehaviour
 	}
 
 	public void MenuResult(){
-		Beres.SetActive(true);
 		finish = true;
 		PlayerController.player = true;
     }

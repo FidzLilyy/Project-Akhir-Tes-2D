@@ -20,15 +20,16 @@ public class Animasi : MonoBehaviour
         totalTexts = textFields.Length;
 
         // Pastikan hanya teks pertama yang terlihat di awal
-        for (int i = 0; i < totalTexts; i++)
-        {
-            textFields[i].gameObject.SetActive(i == 0);
-        }
+        // for (int i = 0; i < totalTexts; i++)
+        // {
+        //     textFields[i].gameObject.SetActive(i == 0);
+        // }
 
-        if(Finish.finish){
-            animator.Play(Animation); // Pastikan nama animasi sesuai
-            print("BERES");
-        }
+        // if(Finish.finish){
+        //     animator.Play(Animation); // Pastikan nama animasi sesuai
+        //     print("BERES");
+        // }
+        animator.Play(Animation);
     }
 
     void Update()
@@ -41,10 +42,12 @@ public class Animasi : MonoBehaviour
 
             // Pindah ke teks berikutnya
             currentTextIndex++;
+
             if (currentTextIndex < totalTexts)
             {
+                print("HAYUUUU");
                 // Aktifkan teks berikutnya dan mainkan animasi berikutnya
-                textFields[currentTextIndex].gameObject.SetActive(true);
+                textFields[currentTextIndex].gameObject.SetActive(true);                
             }
         }
 
@@ -53,8 +56,7 @@ public class Animasi : MonoBehaviour
                 endProlog = true;
                 transisi.SetActive(true);
             }
-            Finish.finish = false;
-            Finish.end = true;
+            //Finish.finish = false;
         }
     }
 }
